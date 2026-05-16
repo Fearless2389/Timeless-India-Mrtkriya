@@ -31,7 +31,7 @@ function Card({ step, i }) {
       </span>
       <div
         className="mono text-[10px] tracking-[0.22em] uppercase mb-3"
-        style={{ color: 'var(--c-gold)' }}
+        style={{ color: 'var(--accent)' }}
       >
         Step {step.no} · {step.note}
       </div>

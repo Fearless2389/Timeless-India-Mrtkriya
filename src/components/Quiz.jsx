@@ -140,7 +140,7 @@ export default function Quiz() {
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute inset-y-0 left-0"
                   style={{
-                    background: 'linear-gradient(90deg, var(--c-terracotta), var(--c-gold))',
+                    background: 'linear-gradient(90deg, var(--c-terracotta), var(--accent))',
                   }}
                 />
               </div>
@@ -196,7 +196,7 @@ export default function Quiz() {
                         >
                           <span
                             className="mono text-[11px] tracking-[0.18em] uppercase mt-1"
-                            style={{ color: 'var(--c-gold)' }}
+                            style={{ color: 'var(--accent)' }}
                           >
                             {String.fromCharCode(65 + idx)}
                           </span>
@@ -226,7 +226,7 @@ export default function Quiz() {
                         >
                           <div
                             className="mono text-[10.5px] tracking-[0.22em] uppercase mb-2"
-                            style={{ color: 'var(--c-gold)' }}
+                            style={{ color: 'var(--accent)' }}
                           >
                             {picked === q.correct ? '✓ Correct' : '✗ Not quite'}
                           </div>

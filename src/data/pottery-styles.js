@@ -1,3 +1,7 @@
+// Real photographs sourced from Wikimedia Commons (CC BY-SA / public domain).
+// If a URL ever 404s, Styles.jsx falls back to the original gradient swatch.
+const W = 'https://upload.wikimedia.org/wikipedia/commons'
+
 export const potteryStyles = [
   {
     name: 'Jaipur Blue Pottery',
@@ -7,6 +11,8 @@ export const potteryStyles = [
     feature: 'Quartz body (no clay)',
     body: 'The only major Indian pottery tradition with no clay in its body. Developed under Kachwaha patronage with craftsmen brought from Persia and Samarkand; cobalt and turquoise glazes over a fired quartz-glass-borax-multani mitti dough. Revived in the twentieth century by Kripal Singh Shekhawat.',
     quote: 'Cobalt blue · Persian floral motifs',
+    img: `${W}/7/72/Blue_Pottery_Jaipur_Collection.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Khurja Pottery',
@@ -16,6 +22,8 @@ export const potteryStyles = [
     feature: 'GI Tag No. 1 · 400+ units',
     body: 'India\'s "ceramics city" — over 400 manufacturing units producing hotel china, tableware, and decorative glazed ware for export to 50+ countries. Combines indigenous terracotta skills with Persian glaze technology since the Mughal period. Post-2000 lead-glaze reform has shifted production to alkaline boron-zinc systems.',
     quote: 'Where craft meets industry',
+    img: `${W}/a/a8/Khurja_Pottery.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Bankura Horse',
@@ -25,6 +33,8 @@ export const potteryStyles = [
     feature: 'India\'s folk pottery icon',
     body: 'The elongated terracotta horse of Panchmura village is India\'s most recognised folk pottery symbol — so iconic it appears on the Government of India\'s Handicrafts logo. Made in two halves joined before drying, votively offered to the horse-deity Dharmaraj. Bishnupur\'s terracotta temple panels nearby trace continuous tradition since the 17th century.',
     quote: 'Hollow body, uniform firing',
+    img: `${W}/b/b1/Terracotta_horse_%2C_bankura_panchmura.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Molela Clay Relief',
@@ -34,6 +44,8 @@ export const potteryStyles = [
     feature: '700+ years of tradition',
     body: 'Wall-mounted terracotta plaques of Devnarayan, Nag Devta, and folk deities commissioned to fulfill vows at village shrines. Made by Kumhar families of Molela who have held this tradition for over seven centuries. The flat reliefs combine hand-modelled figural elements with incised geometric borders.',
     quote: 'Sacred votive plaques',
+    img: `${W}/9/95/Molela_Terracotta_Art_and_Wooden_Idols_07.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Longpi Pottery',
@@ -43,6 +55,8 @@ export const potteryStyles = [
     feature: 'Wheelless · serpentinite + clay',
     body: 'A geological rarity. Made from a unique mixture of serpentinite stone and clay found only in Longpi village of the Tangkhul Naga community. Hand-shaped without a wheel, stone-burnished to a soft sheen, and pit-fired with smoke for the signature charcoal finish. A 2000-year-old tradition.',
     quote: 'No wheel · stone-clay composite',
+    img: `${W}/5/55/Longpi_pottery_of_Thankul_Naga_tribes_DSCN1244_01.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Nizamabad Black Ware',
@@ -52,15 +66,19 @@ export const potteryStyles = [
     feature: 'Zinc-sulphate resist · silver motifs',
     body: 'Distinctive black-ware lacquered and polished to a brilliant sheen using pure zinc-sulphate resist patterning. The silver motifs on jet-black ground exploit controlled reduction firing followed by burnishing. A direct technological descendant of the Northern Black Polished Ware tradition of the Mahajanapadas.',
     quote: 'NBPW\'s living descendant',
+    img: `${W}/3/34/Nizamabad_black_clay_pottery.png`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Kutch & Saurashtra',
     state: 'Gujarat',
     gi: false,
     palette: ['#C88B30', '#9C3B1E', '#E8DAB8'],
-    feature: 'Terracotta horses · sheesha work',
-    body: 'Tribal votive horses and mirror-inlaid pots from the Banni grasslands. Pottery often integrated with Rogan painting and sheesha (mirror) work. Bold folk aesthetics combining hand-coiled and paddle-and-anvil techniques, with iconographic continuity from Harappan painted ware.',
+    feature: 'Khavda pottery · sheesha work',
+    body: 'Tribal votive horses and mirror-inlaid pots from the Banni grasslands. The Khavda village of Kutch is the heart of this tradition. Pottery is often integrated with Rogan painting and sheesha (mirror) work — bold folk aesthetics combining hand-coiled and paddle-and-anvil techniques, with iconographic continuity from Harappan painted ware.',
     quote: 'Folk votive traditions',
+    img: `${W}/8/87/Khavda_pottery_from_Ludia_village_in_Gujarat.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Pokhran Terracotta',
@@ -70,6 +88,8 @@ export const potteryStyles = [
     feature: 'Export cluster · bold folk',
     body: 'Thar desert terracotta figurines, ritual lamps, and architectural tiles produced in artisan clusters around Pokhran. Bold folk aesthetics with thick walls suited to the dry climate. SFURTI cluster development has improved kiln efficiency and market linkage in the region.',
     quote: 'Desert-clay craft cluster',
+    img: `${W}/8/8c/Terracotta_figurines_from_Pokhran%2C_Rajasthan_on_display_at_Basant_Saras_%28exhibition_cum_sale_of_products_by_rural_craftsmen%29_at_Dilli_Haat%2C_in_New_Delhi_on_April_01%2C_2005.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Bikaner Lac-work',
@@ -79,6 +99,8 @@ export const potteryStyles = [
     feature: 'Wax inlay on black ground',
     body: 'Colourful coloured-lac (wax) inlay on a black-burnished pot ground — a tradition uniting metalwork-style decorative vocabulary with clay forms. Post-firing application of melted lac sticks creates patterns that contrast sharply with the smooth ceramic body.',
     quote: 'Wax-stick decoration',
+    img: `${W}/b/bc/Bikaner_Gold_Lacquer_Pottery%2C_Albert_Hall_Museum.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Kashi (Varanasi)',
@@ -88,6 +110,8 @@ export const potteryStyles = [
     feature: 'Ganga-clay · devotional figurines',
     body: 'Terracotta figurines and glazed tiles drawn from the rich alluvial clays of the Ganga floodplain. Devotional imagery — Krishna, Durga, ritual lamps — is the dominant output, supplied to the temple economy of Varanasi and pilgrimage centres of the Gangetic plain.',
     quote: 'Pilgrimage-ware tradition',
+    img: `${W}/3/3a/Diwali_Diya_4.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Krishnanagar Dolls',
@@ -97,6 +121,8 @@ export const potteryStyles = [
     feature: 'Unbaked clay · vegetable pigments',
     body: 'Exceptionally fine unbaked clay dolls cast in traditional fired-clay bisque moulds and painted with vegetable pigments. The ephemeral, unfired body produces a finely modelled but perishable object — a uniquely Bengali contribution to the global vocabulary of doll-making.',
     quote: 'Unfired · ephemeral · refined',
+    img: `${W}/1/1e/Krishnanagar_Clay_Models.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
   {
     name: 'Dharavi Earthenware',
@@ -106,5 +132,7 @@ export const potteryStyles = [
     feature: 'Urban Kumbhar community',
     body: 'The Mumbai Kumbharwada in Dharavi is one of the largest urban concentrations of traditional potters in India. Utilitarian earthenware — diyas, matkas, cooking pots — produced at scale for the city\'s religious calendar and informal economy. A study in how craft survives the megacity.',
     quote: 'Megacity craft survival',
+    img: `${W}/d/d1/Kumbharwada_at_dharavi.jpg`,
+    credit: 'Wikimedia Commons · CC BY-SA',
   },
 ]

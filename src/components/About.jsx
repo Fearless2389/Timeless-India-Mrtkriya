@@ -23,7 +23,7 @@ export default function About() {
             </h2>
             <div className="rule my-8" />
             <p className="text-lg md:text-xl text-pretty" style={{ color: 'var(--muted)' }}>
-              The Sanskrit compound <span className="italic" style={{ color: 'var(--c-gold)' }}>Mrtkriya</span> —
+              The Sanskrit compound <span className="italic" style={{ color: 'var(--accent)' }}>Mrtkriya</span> —
               from <em>mrt</em> (clay; cf. <em>mrttika</em>, earthen vessel) and <em>kriya</em> (action, process,
               craft) — captures both the elemental simplicity and the intentional craft of the discipline. In
               classical enumerations of the <span className="mono">64 Kalas</span>, Mrtkriya occupies a
@@ -48,7 +48,7 @@ export default function About() {
             >
               <span
                 className="absolute top-3 left-4 deva text-7xl leading-none"
-                style={{ color: 'var(--c-terracotta-lt)', opacity: 0.3 }}
+                style={{ color: 'var(--accent-2)', opacity: 0.3 }}
               >
                 ॥
               </span>
@@ -61,7 +61,7 @@ export default function About() {
               </p>
               <footer
                 className="mono text-[11px] tracking-[0.2em] uppercase mt-6 pl-6"
-                style={{ color: 'var(--c-gold)' }}
+                style={{ color: 'var(--accent)' }}
               >
                 — Vishwakarma Purāṇa
               </footer>
@@ -81,7 +81,7 @@ export default function About() {
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                   className="surface p-5"
                 >
-                  <div className="h-display text-3xl" style={{ color: 'var(--c-gold)' }}>
+                  <div className="h-display text-3xl" style={{ color: 'var(--accent)' }}>
                     {x.k}
                   </div>
                   <div className="mono text-[10px] tracking-[0.2em] uppercase mt-1.5 opacity-70">

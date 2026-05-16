@@ -52,12 +52,12 @@ function Card({ c, i }) {
     >
       <div
         className="deva text-4xl mb-4"
-        style={{ color: 'var(--c-gold)', opacity: 0.7 }}
+        style={{ color: 'var(--accent)', opacity: 0.7 }}
         aria-hidden
       >
         {c.icon}
       </div>
-      <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-3" style={{ color: 'var(--c-gold)' }}>
+      <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-3" style={{ color: 'var(--accent)' }}>
         {c.label}
       </div>
       <h3 className="h-display text-xl md:text-2xl leading-tight mb-3">{c.title}</h3>
@@ -106,12 +106,12 @@ export default function Culture() {
           className="surface p-8 md:p-12 relative max-w-4xl mx-auto"
           style={{
             background: 'var(--surface-2)',
-            borderLeft: '3px solid var(--c-gold)',
+            borderLeft: '3px solid var(--accent)',
           }}
         >
           <span
             className="absolute top-2 left-4 deva text-7xl leading-none pointer-events-none"
-            style={{ color: 'var(--c-gold)', opacity: 0.18 }}
+            style={{ color: 'var(--accent)', opacity: 0.18 }}
             aria-hidden
           >
             ॐ
@@ -126,7 +126,7 @@ export default function Culture() {
           </p>
           <footer
             className="mono text-[11px] tracking-[0.22em] uppercase mt-6 pl-6 md:pl-8"
-            style={{ color: 'var(--c-gold)' }}
+            style={{ color: 'var(--accent)' }}
           >
             — Aitareya Brāhmaṇa, 5.32 (trans. Haug)
           </footer>
@@ -143,7 +143,7 @@ export default function Culture() {
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="surface p-6 text-center"
               >
-                <div className="h-display text-3xl md:text-4xl" style={{ color: 'var(--c-terracotta-lt)' }}>
+                <div className="h-display text-3xl md:text-4xl" style={{ color: 'var(--accent-2)' }}>
                   {s.v}
                 </div>
                 <div className="mono text-[10px] tracking-[0.2em] uppercase mt-2 opacity-70">

@@ -44,11 +44,11 @@ export default function References() {
             >
               <div
                 className="mono text-[11px] tracking-[0.16em] uppercase shrink-0"
-                style={{ color: 'var(--c-gold)' }}
+                style={{ color: 'var(--accent)' }}
               >
                 <div
                   className="w-9 h-9 flex items-center justify-center border rounded-full mb-2"
-                  style={{ borderColor: 'var(--c-gold)' }}
+                  style={{ borderColor: 'var(--accent)' }}
                 >
                   <BookOpen size={14} />
                 </div>
@@ -57,7 +57,7 @@ export default function References() {
               <div className="flex-1 min-w-0">
                 <div
                   className="mono text-[10px] tracking-[0.18em] uppercase mb-1.5"
-                  style={{ color: 'var(--c-terracotta-lt)' }}
+                  style={{ color: 'var(--accent-2)' }}
                 >
                   {r.tag} · {r.year}
                 </div>

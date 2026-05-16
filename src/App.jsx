@@ -13,6 +13,7 @@ import StatsBar from './components/StatsBar.jsx'
 import Quiz from './components/Quiz.jsx'
 import References from './components/References.jsx'
 import Footer from './components/Footer.jsx'
+import AudioPlayer from './components/AudioPlayer.jsx'
 
 export default function App() {
   const [theme, setTheme] = useState('dark')
@@ -43,6 +44,7 @@ export default function App() {
         <References />
       </main>
       <Footer />
+      <AudioPlayer />
     </div>
   )
 }

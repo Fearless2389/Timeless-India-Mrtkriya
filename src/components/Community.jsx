@@ -105,7 +105,7 @@ export default function Community() {
             transition={{ duration: 0.7 }}
           >
             <div className="surface p-6 mb-6">
-              <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-3" style={{ color: 'var(--c-gold)' }}>
+              <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-3" style={{ color: 'var(--accent)' }}>
                 Names across languages
               </div>
               <div className="flex flex-wrap gap-2">
@@ -123,7 +123,7 @@ export default function Community() {
               <div className="rule my-5" />
               <p style={{ color: 'var(--muted)' }} className="text-pretty">
                 The <span className="italic">National Sample Survey 73rd Round (2015–16)</span> estimated approximately{' '}
-                <span style={{ color: 'var(--c-gold)' }} className="mono">23 lakh (2.3 million)</span> craft workers engaged in
+                <span style={{ color: 'var(--accent)' }} className="mono">23 lakh (2.3 million)</span> craft workers engaged in
                 pottery-related activities, of whom roughly 68% are in rural areas. Female participation is high in
                 certain regional traditions — in tribal communities of Odisha and the Northeast, pottery is
                 exclusively a women's occupation.
@@ -182,7 +182,7 @@ export default function Community() {
                     <h4 className="h-display text-lg md:text-xl">{p.title}</h4>
                     <span
                       className="mono text-[10px] tracking-[0.16em] uppercase whitespace-nowrap"
-                      style={{ color: 'var(--c-gold)' }}
+                      style={{ color: 'var(--accent)' }}
                     >
                       {p.year}
                     </span>
@@ -205,7 +205,7 @@ export default function Community() {
           className="mt-12 p-7 md:p-9 relative overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, #0D0804 0%, #1A100A 100%)',
-            border: '1px solid var(--c-gold)',
+            border: '1px solid #D4A843',
           }}
         >
           <div className="absolute inset-0 opacity-30 pointer-events-none">
@@ -215,7 +215,7 @@ export default function Community() {
             />
           </div>
           <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="md:col-span-4 mono text-[10.5px] tracking-[0.25em] uppercase mb-2" style={{ color: 'var(--c-gold)' }}>
+            <div className="md:col-span-4 mono text-[10.5px] tracking-[0.25em] uppercase mb-2" style={{ color: '#D4A843' }}>
               Industry Snapshot · 2023 — 2024
             </div>
             {industry.map((s, i) => (

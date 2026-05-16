@@ -26,14 +26,14 @@ function ClayPanel() {
             <h4 className="h-display text-2xl">{c.name}</h4>
             <span
               className="mono text-[10px] tracking-[0.18em] uppercase"
-              style={{ color: 'var(--c-gold)' }}
+              style={{ color: 'var(--accent)' }}
             >
               {c.burn}
             </span>
           </div>
           <div
             className="mono text-[11px] mb-3 inline-block px-2 py-1 rounded-sm"
-            style={{ background: 'var(--surface-2)', color: 'var(--c-terracotta-lt)' }}
+            style={{ background: 'var(--surface-2)', color: 'var(--accent-2)' }}
           >
             {c.formula}
           </div>
@@ -67,7 +67,7 @@ function ClassPanel() {
                 <td>
                   <div
                     className="h-display text-[1.15rem]"
-                    style={{ color: 'var(--c-terracotta-lt)' }}
+                    style={{ color: 'var(--accent-2)' }}
                   >
                     {row.type}
                   </div>
@@ -105,17 +105,17 @@ function GlazePanel() {
         >
           <div
             className="absolute -top-6 -right-3 h-display pointer-events-none select-none"
-            style={{ fontSize: '5.2rem', color: 'var(--c-gold)', opacity: 0.08, letterSpacing: '-0.05em' }}
+            style={{ fontSize: '5.2rem', color: 'var(--accent)', opacity: 0.08, letterSpacing: '-0.05em' }}
           >
             {String(i + 1).padStart(2, '0')}
           </div>
-          <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-2" style={{ color: 'var(--c-gold)' }}>
+          <div className="mono text-[10.5px] tracking-[0.22em] uppercase mb-2" style={{ color: 'var(--accent)' }}>
             {g.role}
           </div>
           <h4 className="h-display text-2xl mb-2">{g.name}</h4>
           <div
             className="mono text-[11px] mb-3 inline-block px-2 py-1 rounded-sm"
-            style={{ background: 'var(--surface-2)', color: 'var(--c-terracotta-lt)' }}
+            style={{ background: 'var(--surface-2)', color: 'var(--accent-2)' }}
           >
             {g.formula}
           </div>
@@ -142,7 +142,7 @@ function AppsPanel() {
         >
           <div
             className="text-3xl mb-3"
-            style={{ color: 'var(--c-terracotta-lt)', fontFamily: 'serif', lineHeight: 1 }}
+            style={{ color: 'var(--accent-2)', fontFamily: 'serif', lineHeight: 1 }}
             aria-hidden
           >
             {a.icon}
@@ -153,7 +153,7 @@ function AppsPanel() {
           </p>
           <div
             className="mono text-[10.5px] tracking-[0.22em] uppercase pt-3 border-t"
-            style={{ borderColor: 'var(--line)', color: 'var(--c-gold)' }}
+            style={{ borderColor: 'var(--line)', color: 'var(--accent)' }}
           >
             {a.actors}
           </div>
@@ -212,7 +212,7 @@ export default function Engineering() {
               data-cursor
               className="relative mono text-[11px] md:text-[12px] tracking-[0.18em] uppercase px-4 py-3"
               style={{
-                color: tab === t.id ? 'var(--c-gold)' : 'var(--muted)',
+                color: tab === t.id ? 'var(--accent)' : 'var(--muted)',
                 opacity: tab === t.id ? 1 : 0.85,
               }}
             >
@@ -221,7 +221,7 @@ export default function Engineering() {
                 <motion.span
                   layoutId="eng-tab"
                   className="absolute left-0 right-0 -bottom-px h-[2px]"
-                  style={{ background: 'var(--c-gold)' }}
+                  style={{ background: 'var(--accent)' }}
                   transition={{ type: 'spring', stiffness: 300, damping: 28 }}
                 />
               )}
