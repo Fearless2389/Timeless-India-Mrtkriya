@@ -75,13 +75,13 @@ export default function Navbar({ theme, toggleTheme }) {
             </div>
           </button>
 
-          <nav className="hidden md:flex items-center gap-1 flex-wrap justify-center">
+          <nav className="hidden lg:flex items-center gap-1">
             {links.map((l) => (
               <button
                 key={l.id}
                 onClick={() => go(l.id)}
                 data-cursor
-                className="relative mono text-[10.5px] lg:text-[11px] px-2 lg:px-3 py-2 tracking-[0.13em] lg:tracking-[0.15em] uppercase opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap"
+                className="relative mono text-[11px] px-3 py-2 tracking-[0.15em] uppercase opacity-70 hover:opacity-100 transition-opacity"
                 style={{ color: active === l.id ? 'var(--accent)' : 'inherit', opacity: active === l.id ? 1 : 0.7 }}
               >
                 {l.label}
@@ -109,7 +109,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <button
               onClick={() => setOpen(true)}
               data-cursor
-              className="md:hidden w-11 h-11 flex items-center justify-center border rounded-full"
+              className="lg:hidden w-11 h-11 flex items-center justify-center border rounded-full"
               style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
               aria-label="Open navigation menu"
               aria-expanded={open}
@@ -132,7 +132,7 @@ export default function Navbar({ theme, toggleTheme }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[80] md:hidden"
+            className="fixed inset-0 z-[80] lg:hidden"
             style={{ background: 'color-mix(in srgb, var(--bg) 96%, transparent)', backdropFilter: 'blur(18px)' }}
           >
             <div className="container-wide pt-6 flex justify-end">

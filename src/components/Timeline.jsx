@@ -11,46 +11,17 @@ function Item({ item, index }) {
       ref={ref}
       className="relative grid md:grid-cols-[1fr_80px_1fr] gap-4 md:gap-6 mb-10 md:mb-14 items-start"
     >
-      {/* Spacer for desktop layout */}
-      <div className={`hidden md:block ${isLeft ? '' : 'order-1'}`} aria-hidden />
-
-      {/* Center marker */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={visible ? { scale: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.15, type: 'spring', stiffness: 240, damping: 14 }}
-        className="hidden md:flex items-start justify-center relative md:order-2"
-        style={{ alignSelf: 'flex-start', paddingTop: '1.9rem' }}
-        aria-hidden="true"
-      >
-        <div
-          className="absolute top-0 bottom-[-3.5rem] left-1/2 -translate-x-1/2 w-px"
-          style={{ background: 'var(--accent)', opacity: 0.28 }}
-        />
-        <div
-          className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center mono text-[10px]"
-          style={{
-            background: 'var(--bg)',
-            border: '1.5px solid var(--c-terracotta)',
-            color: 'var(--accent-2)',
-            letterSpacing: '0.15em',
-            cursor: 'default',
-          }}
-        >
-          <div
-            className="absolute inset-1 rounded-full"
-            style={{ border: '1px solid var(--accent)', opacity: 0.4 }}
-          />
-          <span>{String(index + 1).padStart(2, '0')}</span>
-        </div>
-      </motion.div>
-
-      {/* Content */}
+      {/* Content — explicit column placement */}
       <motion.div
         initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
         animate={visible ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className={`self-start w-full md:max-w-[480px] ${isLeft ? 'md:order-1 md:ml-auto' : 'md:order-3'}`}
+        className="self-start w-full md:max-w-[480px]"
+        style={{
+          gridColumn: isLeft ? '1 / 2' : '3 / 4',
+          gridRow: 1,
+          justifySelf: isLeft ? 'end' : 'start',
+        }}
       >
         <div className={`surface p-6 md:p-7 ${isLeft ? 'md:text-right' : ''}`}>
           <div
@@ -75,6 +46,42 @@ function Item({ item, index }) {
           >
             {item.keyword}
           </div>
+        </div>
+      </motion.div>
+
+      {/* Center marker */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={visible ? { scale: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.15, type: 'spring', stiffness: 240, damping: 14 }}
+        className="hidden md:flex items-start justify-center relative"
+        style={{
+          gridColumn: '2 / 3',
+          gridRow: 1,
+          alignSelf: 'flex-start',
+          paddingTop: '1.9rem',
+        }}
+        aria-hidden="true"
+      >
+        <div
+          className="absolute top-0 bottom-[-3.5rem] left-1/2 -translate-x-1/2 w-px"
+          style={{ background: 'var(--accent)', opacity: 0.28 }}
+        />
+        <div
+          className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center mono text-[10px]"
+          style={{
+            background: 'var(--bg)',
+            border: '1.5px solid var(--c-terracotta)',
+            color: 'var(--accent-2)',
+            letterSpacing: '0.15em',
+            cursor: 'default',
+          }}
+        >
+          <div
+            className="absolute inset-1 rounded-full"
+            style={{ border: '1px solid var(--accent)', opacity: 0.4 }}
+          />
+          <span>{String(index + 1).padStart(2, '0')}</span>
         </div>
       </motion.div>
     </div>
