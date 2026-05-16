@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import CustomCursor from './components/CustomCursor.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -16,20 +16,16 @@ import Footer from './components/Footer.jsx'
 import AudioPlayer from './components/AudioPlayer.jsx'
 
 export default function App() {
-  const [theme, setTheme] = useState('dark')
-
   useEffect(() => {
     const root = document.documentElement
-    root.classList.remove('light', 'dark')
-    root.classList.add(theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+    root.classList.remove('light')
+    root.classList.add('dark')
+  }, [])
 
   return (
     <div className="relative">
       <CustomCursor />
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Navbar />
       <main>
         <Hero />
         <About />

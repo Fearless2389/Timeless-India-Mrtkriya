@@ -21,19 +21,7 @@
 
   html { scroll-behavior: smooth; }
 
-  html.light {
-    --bg: var(--c-bone);
-    --fg: var(--c-ink);
-    --surface: #fff;
-    --surface-2: var(--c-parchment);
-    --line: rgba(31, 20, 16, 0.12);
-    --muted: #574234;
-    --accent: #9C7820;
-    --accent-2: #8B3514;
-    --accent-tint: rgba(156, 120, 32, 0.10);
-    --accent-border: rgba(156, 120, 32, 0.45);
-  }
-  html.dark {
+  html, html.dark {
     --bg: var(--c-charcoal);
     --fg: var(--c-parchment);
     --surface: var(--c-charcoal-2);

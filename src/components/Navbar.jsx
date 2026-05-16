@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const links = [
   { id: 'about', label: '01 · Origin' },
@@ -14,7 +14,7 @@ const links = [
   { id: 'references', label: '09 · Sources' },
 ]
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar() {
   const [active, setActive] = useState('hero')
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -101,15 +101,6 @@ export default function Navbar({ theme, toggleTheme }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              data-cursor
-              aria-label="Toggle theme"
-              className="w-10 h-10 flex items-center justify-center border rounded-full"
-              style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
-            >
-              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
             <button
               onClick={() => setOpen(true)}
               data-cursor
