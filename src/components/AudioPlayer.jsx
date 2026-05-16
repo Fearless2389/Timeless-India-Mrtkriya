@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Music, Volume2 } from 'lucide-react'
 
 const TARGET_VOL = 0.22
-const FADE_MS = 1200
+const FADE_MS = 1600
 const STORAGE_KEY = 'mrtkriya:audio'
 const SRC = '/audio/ambient.mp3'
 
@@ -26,9 +26,9 @@ export default function AudioPlayer() {
   const audioRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [available, setAvailable] = useState(true)
-  const [primed, setPrimed] = useState(false)
+  const userOffRef = useRef(false)
 
-  // Probe the file existence (so we can disable the button if it's missing)
+  // Probe the file
   useEffect(() => {
     let cancelled = false
     fetch(SRC, { method: 'HEAD' })
@@ -43,16 +43,60 @@ export default function AudioPlayer() {
     }
   }, [])
 
-  // Remember the user's preference but don't autoplay (browsers block it)
+  // Auto-start: try immediately, and if the browser blocks it,
+  // start on the very first user interaction (the standard workaround
+  // for browser autoplay policies).
   useEffect(() => {
-    const remembered = localStorage.getItem(STORAGE_KEY)
-    if (remembered === 'on') setPrimed(true)
+    const a = audioRef.current
+    if (!a) return
+
+    // Respect an explicit user "off" from a previous session
+    if (localStorage.getItem(STORAGE_KEY) === 'off') {
+      userOffRef.current = true
+      return
+    }
+
+    let startedRef = { current: false }
+
+    const start = async () => {
+      if (startedRef.current || userOffRef.current) return
+      startedRef.current = true
+      a.volume = 0
+      try {
+        await a.play()
+        setPlaying(true)
+        localStorage.setItem(STORAGE_KEY, 'on')
+        fadeTo(a, TARGET_VOL, FADE_MS)
+      } catch {
+        // Browser still blocked it (Safari is strict) — re-arm for next gesture
+        startedRef.current = false
+      }
+    }
+
+    // First attempt immediately
+    start()
+
+    // Fallback: trigger on first interaction
+    const events = ['pointerdown', 'click', 'keydown', 'touchstart', 'mousemove', 'scroll', 'wheel']
+    const onAny = () => {
+      start().finally(() => {
+        if (startedRef.current) {
+          events.forEach((e) => window.removeEventListener(e, onAny, { capture: true }))
+        }
+      })
+    }
+    events.forEach((e) => window.addEventListener(e, onAny, { capture: true, passive: true }))
+
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, onAny, { capture: true }))
+    }
   }, [])
 
   const toggle = async () => {
     const a = audioRef.current
     if (!a || !available) return
     if (!playing) {
+      userOffRef.current = false
       a.volume = 0
       try {
         await a.play()
@@ -63,6 +107,7 @@ export default function AudioPlayer() {
       localStorage.setItem(STORAGE_KEY, 'on')
       fadeTo(a, TARGET_VOL, FADE_MS)
     } else {
+      userOffRef.current = true
       await fadeTo(a, 0, FADE_MS / 2)
       a.pause()
       setPlaying(false)
@@ -85,8 +130,6 @@ export default function AudioPlayer() {
             ? 'Ambient music unavailable'
             : playing
             ? 'Pause ambient music'
-            : primed
-            ? 'Resume ambient music'
             : 'Play ambient music'
         }
         title={
