@@ -43,52 +43,67 @@ export default function AudioPlayer() {
     }
   }, [])
 
-  // Auto-start: try immediately, and if the browser blocks it,
-  // start on the very first user interaction (the standard workaround
-  // for browser autoplay policies).
+  // Auto-start every page load. Pause is honoured for the *current
+  // session only* (sessionStorage) so the music returns on the next
+  // visit without the user needing to do anything.
   useEffect(() => {
     const a = audioRef.current
     if (!a) return
 
-    // Respect an explicit user "off" from a previous session
-    if (localStorage.getItem(STORAGE_KEY) === 'off') {
-      userOffRef.current = true
-      return
-    }
+    // Clear any legacy localStorage value from the manual-only version
+    // of this player so it can't suppress autoplay any more.
+    try { localStorage.removeItem(STORAGE_KEY) } catch {}
 
-    let startedRef = { current: false }
+    let started = false
 
     const start = async () => {
-      if (startedRef.current || userOffRef.current) return
-      startedRef.current = true
-      a.volume = 0
+      if (started || userOffRef.current) return
       try {
+        a.volume = 0
         await a.play()
+        started = true
         setPlaying(true)
-        localStorage.setItem(STORAGE_KEY, 'on')
         fadeTo(a, TARGET_VOL, FADE_MS)
       } catch {
-        // Browser still blocked it (Safari is strict) — re-arm for next gesture
-        startedRef.current = false
+        // browser blocked it — leave `started=false` so the next gesture retries
       }
     }
 
-    // First attempt immediately
+    // 1. Try immediately (mostly works only if the visitor has used the
+    // site before and the browser remembers a user gesture history).
     start()
 
-    // Fallback: trigger on first interaction
-    const events = ['pointerdown', 'click', 'keydown', 'touchstart', 'mousemove', 'scroll', 'wheel']
-    const onAny = () => {
-      start().finally(() => {
-        if (startedRef.current) {
-          events.forEach((e) => window.removeEventListener(e, onAny, { capture: true }))
-        }
-      })
+    // 2. Otherwise: trigger on the first user interaction of any kind.
+    const events = [
+      'pointerdown',
+      'click',
+      'keydown',
+      'touchstart',
+      'mousemove',
+      'scroll',
+      'wheel',
+    ]
+    const onAny = async () => {
+      await start()
+      if (started) {
+        events.forEach((e) =>
+          window.removeEventListener(e, onAny, { capture: true })
+        )
+      }
     }
-    events.forEach((e) => window.addEventListener(e, onAny, { capture: true, passive: true }))
+    events.forEach((e) =>
+      window.addEventListener(e, onAny, { capture: true, passive: true })
+    )
+
+    // Honour a current-session pause (cleared on full reload)
+    if (sessionStorage.getItem(STORAGE_KEY) === 'off') {
+      userOffRef.current = true
+    }
 
     return () => {
-      events.forEach((e) => window.removeEventListener(e, onAny, { capture: true }))
+      events.forEach((e) =>
+        window.removeEventListener(e, onAny, { capture: true })
+      )
     }
   }, [])
 
@@ -97,6 +112,7 @@ export default function AudioPlayer() {
     if (!a || !available) return
     if (!playing) {
       userOffRef.current = false
+      sessionStorage.removeItem(STORAGE_KEY)
       a.volume = 0
       try {
         await a.play()
@@ -104,14 +120,13 @@ export default function AudioPlayer() {
         return
       }
       setPlaying(true)
-      localStorage.setItem(STORAGE_KEY, 'on')
       fadeTo(a, TARGET_VOL, FADE_MS)
     } else {
       userOffRef.current = true
+      sessionStorage.setItem(STORAGE_KEY, 'off')
       await fadeTo(a, 0, FADE_MS / 2)
       a.pause()
       setPlaying(false)
-      localStorage.setItem(STORAGE_KEY, 'off')
     }
   }
 
