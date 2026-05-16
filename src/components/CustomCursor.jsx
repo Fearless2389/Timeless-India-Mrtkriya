@@ -10,12 +10,26 @@ export default function CustomCursor() {
   useEffect(() => {
     if (window.matchMedia('(max-width: 900px)').matches) return
 
+    let revealed = false
+    const reveal = () => {
+      if (revealed) return
+      revealed = true
+      if (dot.current) dot.current.style.opacity = '1'
+      if (ring.current) ring.current.style.opacity = '1'
+    }
+    const hide = () => {
+      revealed = false
+      if (dot.current) dot.current.style.opacity = '0'
+      if (ring.current) ring.current.style.opacity = '0'
+    }
+
     const onMove = (e) => {
       target.current.x = e.clientX
       target.current.y = e.clientY
       if (dot.current) {
         dot.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`
       }
+      reveal()
     }
 
     const tick = () => {
@@ -44,18 +58,23 @@ export default function CustomCursor() {
     }
 
     window.addEventListener('mousemove', onMove)
-    document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
-      el.addEventListener('mouseenter', onHoverIn)
-      el.addEventListener('mouseleave', onHoverOut)
-    })
+    window.addEventListener('mouseleave', hide)
+    window.addEventListener('mouseenter', reveal)
+
+    // Delegate hover for cursor expansion so dynamically-added buttons also work
+    const onDocOver = (e) => {
+      const el = e.target.closest('a, button, [data-cursor]')
+      if (el) onHoverIn()
+      else onHoverOut()
+    }
+    document.addEventListener('mouseover', onDocOver)
 
     return () => {
       cancelAnimationFrame(raf.current)
       window.removeEventListener('mousemove', onMove)
-      document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
-        el.removeEventListener('mouseenter', onHoverIn)
-        el.removeEventListener('mouseleave', onHoverOut)
-      })
+      window.removeEventListener('mouseleave', hide)
+      window.removeEventListener('mouseenter', reveal)
+      document.removeEventListener('mouseover', onDocOver)
     }
   }, [])
 

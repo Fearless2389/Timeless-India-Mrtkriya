@@ -45,7 +45,11 @@ export default function Navbar({ theme, toggleTheme }) {
 
   const go = (id) => {
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (el) {
+      setActive(id)
+      const y = el.getBoundingClientRect().top + window.scrollY - 76
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
     setOpen(false)
   }
 

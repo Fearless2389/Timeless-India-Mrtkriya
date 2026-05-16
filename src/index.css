@@ -201,24 +201,23 @@
 
   .cursor-dot, .cursor-ring {
     position: fixed;
-    top: -100px; left: -100px;
+    top: 0; left: 0;
     pointer-events: none !important;
     z-index: 9999;
     mix-blend-mode: difference;
     border-radius: 50%;
-    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
     will-change: transform;
+    opacity: 0;
   }
   .cursor-dot {
     width: 6px; height: 6px;
     background: var(--c-gold);
-    transform: translate(-50%, -50%);
   }
   .cursor-ring {
     width: 36px; height: 36px;
     border: 1px solid var(--c-gold);
     background: transparent;
-    transform: translate(-50%, -50%);
   }
 
   .data-table {
