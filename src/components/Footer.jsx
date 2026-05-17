@@ -71,14 +71,7 @@ export default function Footer() {
                 <div className="opacity-50 mono text-[10.5px] uppercase tracking-[0.18em] mb-1">Kala</div>
                 Mrtkriya · The Art of Clay
               </li>
-              <li>
-                <div className="opacity-50 mono text-[10.5px] uppercase tracking-[0.18em] mb-1">Level</div>
-                Class 9 · Academic Year 2025 – 2026
-              </li>
-              <li>
-                <div className="opacity-50 mono text-[10.5px] uppercase tracking-[0.18em] mb-1">Source</div>
-                A Comprehensive Academic Report on Pottery and Ceramic Engineering
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -88,7 +81,7 @@ export default function Footer() {
           style={{ borderColor: 'rgba(212,168,67,0.18)' }}
         >
           <div className="mono text-[10.5px] tracking-[0.22em] uppercase opacity-50">
-            © 2025 — 2026 · A school project · No commercial use
+            © 2025 — 2026  · No commercial use
           </div>
           <div className="deva text-[14px] opacity-70" style={{ color: 'var(--c-gold)' }}>
             ॥ कुम्भकारः प्रथमः शिल्पिनाम् ॥
